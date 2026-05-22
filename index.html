@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DW Re:Digitize</title>
+<title>DW Re:Digitize - Contagem Regressiva</title>
 <!-- Sua imagem como favicon -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
 <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
@@ -79,7 +79,7 @@ body{
     }
 }
 
-/* TOPO */
+/* TOPBAR - agora com espaço para o relógio */
 .topbar{
     position:absolute;
     top:20px;
@@ -88,8 +88,9 @@ body{
     z-index:3;
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    align-items:center;
     gap:20px;
+    flex-wrap:wrap;
 }
 
 /* TÍTULO COMO IMAGEM - TAMANHO REDUZIDO */
@@ -107,10 +108,68 @@ body{
     max-width:100%;
     height:auto;
     display:block;
-    /* Forçando um tamanho máximo menor */
     max-height: 80px;
     width: auto;
     margin: 0 auto;
+}
+
+/* RELÓGIO DE CONTAGEM REGRESSIVA - LADO DIREITO */
+.countdown-clock {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 100, 200, 0.5);
+    border-radius: 20px;
+    padding: 12px 24px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 0, 120, 0.4);
+    animation: pulseGlow 2s infinite alternate;
+    min-width: 260px;
+}
+
+.countdown-clock .label {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffb7e8;
+    text-shadow: 0 0 5px #ff3399;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.countdown-clock .timer {
+    font-family: 'Courier New', monospace;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 8px cyan, 0 0 3px magenta;
+    letter-spacing: 2px;
+}
+
+.countdown-clock .timer span {
+    display: inline-block;
+    min-width: 55px;
+    background: rgba(0,0,0,0.5);
+    padding: 4px 6px;
+    border-radius: 12px;
+    margin: 0 2px;
+}
+
+.countdown-clock .sub {
+    font-size: 12px;
+    color: #bbddff;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+@keyframes pulseGlow {
+    0% {
+        border-color: rgba(255, 100, 200, 0.4);
+        box-shadow: 0 0 12px rgba(255, 0, 120, 0.3);
+    }
+    100% {
+        border-color: rgba(255, 180, 240, 0.9);
+        box-shadow: 0 0 28px rgba(255, 20, 150, 0.7);
+    }
 }
 
 /* CONTEÚDO */
@@ -422,10 +481,19 @@ body{
         left:0;
         right:0;
         padding:20px;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .site-title{
         max-width:100%;
+        margin-bottom: 15px;
+    }
+
+    .countdown-clock {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
     }
 
     .footer,
@@ -457,6 +525,18 @@ body{
     <div class="site-title">
         <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
         <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
+    </div>
+    
+    <!-- NOVO RELÓGIO DE CONTAGEM REGRESSIVA LADO DIREITO -->
+    <div class="countdown-clock" id="countdownClock">
+        <div class="label">⚡ LANÇAMENTO DO PATCH FINAL ⚡</div>
+        <div class="timer" id="timerDisplay">
+            <span id="days">00</span>d 
+            <span id="hours">00</span>h 
+            <span id="minutes">00</span>m 
+            <span id="seconds">00</span>s
+        </div>
+        <div class="sub">27 de Junho de 2026 — Embarque Digital</div>
     </div>
 </div>
 
@@ -674,23 +754,70 @@ body{
 </div>
 
 <script>
+// Geração das estrelas
 const stars = document.getElementById("stars");
-
 for(let i=0;i<180;i++){
     const star = document.createElement("div");
     star.classList.add("star");
-
     star.style.left = Math.random()*100+"%";
     star.style.top = Math.random()*100+"%";
-
     const size = Math.random()*3+1;
     star.style.width = size+"px";
     star.style.height = size+"px";
     star.style.animationDelay = Math.random()*3+"s";
-
     stars.appendChild(star);
 }
 
+// ========== CONTAGEM REGRESSIVA PARA 27/06/2026 ==========
+function startCountdown() {
+    // Data alvo: 27 de Junho de 2026 às 00:00:00 (horário local do navegador)
+    const targetDate = new Date(2026, 5, 27, 0, 0, 0); // mês 5 = Junho (0-index)
+    
+    const daysSpan = document.getElementById("days");
+    const hoursSpan = document.getElementById("hours");
+    const minutesSpan = document.getElementById("minutes");
+    const secondsSpan = document.getElementById("seconds");
+    
+    function updateTimer() {
+        const now = new Date().getTime();
+        const targetTime = targetDate.getTime();
+        const distance = targetTime - now;
+        
+        if (distance < 0) {
+            // Contagem encerrada: exibir mensagem especial
+            daysSpan.innerText = "00";
+            hoursSpan.innerText = "00";
+            minutesSpan.innerText = "00";
+            secondsSpan.innerText = "00";
+            const clockDiv = document.getElementById("countdownClock");
+            if (clockDiv) {
+                const labelElement = clockDiv.querySelector(".label");
+                if (labelElement) labelElement.innerHTML = "✨ PATCH DISPONÍVEL ✨";
+                const subElement = clockDiv.querySelector(".sub");
+                if (subElement) subElement.innerHTML = "Tradução Final Liberada! Aproveite!";
+            }
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        daysSpan.innerText = days < 10 ? "0" + days : days;
+        hoursSpan.innerText = hours < 10 ? "0" + hours : hours;
+        minutesSpan.innerText = minutes < 10 ? "0" + minutes : minutes;
+        secondsSpan.innerText = seconds < 10 ? "0" + seconds : seconds;
+    }
+    
+    updateTimer();
+    setInterval(updateTimer, 1000);
+}
+
+// Iniciar a contagem ao carregar a página
+startCountdown();
+
+// ========== FUNCIONALIDADE DO MENU ==========
 const buttons = document.querySelectorAll(".menu button");
 const sections = document.querySelectorAll(".section");
 const quickDesc = document.getElementById("quickDesc");
@@ -715,14 +842,18 @@ buttons.forEach(button => {
         });
 
         const targetSection = document.getElementById(target);
-        targetSection.classList.add("active");
+        if (targetSection) {
+            targetSection.classList.add("active");
+            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
         
-        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        
-        quickDesc.textContent = descriptions[target];
+        if (descriptions[target]) {
+            quickDesc.textContent = descriptions[target];
+        } else {
+            quickDesc.textContent = "Digimon World Re:Digitize Decode - Tradução PT-BR";
+        }
     });
 });
 </script>
-
 </body>
 </html>
