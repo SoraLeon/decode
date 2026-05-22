@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DW Re:Digitize</title>
+<!-- Sua imagem como favicon -->
+<link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
+<link rel="shortcut icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Times New Roman", serif;
+}
+
+html, body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    color:white;
+}
+
+body{
+    position:relative;
+}
+
+/* FUNDO */
+.background{
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top, rgba(120,255,255,0.45), transparent 40%),
+    linear-gradient(to bottom, #17354b 0%, #050024 100%);
+    z-index:0;
+}
+
+/* ESTRELAS */
+.stars{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:#8ffcff;
+    border-radius:50%;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink{
+    from{opacity:.2;}
+    to{opacity:1;}
+}
+
+/* CRISTAIS */
+.crystal{
+    position:absolute;
+    background:linear-gradient(to bottom,#c7f0ff,#2196f3);
+    clip-path:polygon(50% 0%,100% 30%,80% 100%,20% 100%,0% 30%);
+    opacity:.9;
+    animation: float 8s linear infinite;
+    z-index:0;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) rotate(0deg);
+    }
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+    }
+}
+
+/* TOPO */
+.topbar{
+    position:absolute;
+    top:20px;
+    left:30px;
+    right:30px;
+    z-index:3;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+}
+
+/* TÍTULO COMO IMAGEM - TAMANHO REDUZIDO */
+.site-title{
+    max-width:45%;
+    background:rgba(0, 0, 0, .25);
+    border:1px solid rgba(255,255,255,.12);
+    padding:12px 18px;
+    backdrop-filter: blur(6px);
+    box-shadow:0 0 20px rgba(0,255,255,.08);
+    text-align:center;
+}
+
+.site-title img{
+    max-width:100%;
+    height:auto;
+    display:block;
+    /* Forçando um tamanho máximo menor */
+    max-height: 80px;
+    width: auto;
+    margin: 0 auto;
+}
+
+/* CONTEÚDO */
+.content-panel{
+    position:absolute;
+    left:30px;
+    top:145px;
+    bottom:90px;
+    width:52%;
+    padding:24px;
+    overflow-y:auto;
+    z-index:2;
+
+    background:
+        linear-gradient(rgba(7,20,45,.82), rgba(8,14,38,.88));
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:
+        0 0 25px rgba(0,0,0,.35),
+        inset 0 0 20px rgba(255,255,255,.03);
+    backdrop-filter: blur(6px);
+}
+
+.content-panel::-webkit-scrollbar{
+    width:10px;
+}
+.content-panel::-webkit-scrollbar-thumb{
+    background:rgba(120,220,255,.35);
+    border-radius:10px;
+}
+.content-panel::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.05);
+}
+
+.section{
+    display:none;
+    animation:fadeIn .35s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(8px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.section h2{
+    font-size:38px;
+    margin-bottom:16px;
+    color:#ffffff;
+    text-shadow:0 0 10px rgba(255,0,150,.35);
+    border-bottom:1px solid rgba(255,255,255,.12);
+    padding-bottom:10px;
+}
+
+.section h3{
+    font-size:24px;
+    margin:20px 0 10px;
+    color:#93f0ff;
+}
+
+.section p,
+.section li{
+    font-size:20px;
+    line-height:1.5;
+    color:#f1f6ff;
+}
+
+.section p + p{
+    margin-top:12px;
+}
+
+.section ul{
+    margin-left:24px;
+    margin-top:6px;
+}
+
+.section .highlight{
+    color:#8ffcff;
+    font-weight:bold;
+}
+
+.section .warning{
+    margin-top:14px;
+    padding:12px 14px;
+    background:rgba(255,80,80,.12);
+    border:1px solid rgba(255,120,120,.28);
+}
+
+.download-box,
+.patch-box{
+    margin-top:16px;
+    padding:16px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.download-button{
+    display:inline-block;
+    margin-top:12px;
+    padding:12px 20px;
+    font-size:22px;
+    color:white;
+    text-decoration:none;
+    background:linear-gradient(
+        90deg,
+        rgba(120,0,70,.7),
+        rgba(255,0,120,.55),
+        rgba(120,0,70,.7)
+    );
+    box-shadow:0 0 15px rgba(255,0,150,.35);
+    transition:.25s;
+}
+
+.download-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(255,0,150,.5);
+}
+
+.credit-group{
+    margin-bottom:20px;
+    padding:14px;
+    background:rgba(255,255,255,.04);
+    border-left:4px solid rgba(143,252,255,.65);
+}
+
+.credit-group h3{
+    margin-top:0;
+}
+
+.faq-item{
+    margin:15px 0;
+    padding:15px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.faq-item .question{
+    font-size:22px;
+    font-weight:bold;
+    color:#8ffcff;
+    margin-bottom:6px;
+}
+
+.faq-item .answer{
+    font-size:19px;
+    line-height:1.45;
+}
+
+.faq-image{
+    width:100%;
+    margin-top:14px;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+    background:rgba(255,255,255,.04);
+}
+
+.note{
+    margin-top:8px;
+    font-size:17px;
+    color:#d7e6ff;
+    opacity:.9;
+}
+
+/* MENU - CAIXAS MENORES E SEM SOBREPOSIÇÃO */
+.menu-container{
+    position:absolute;
+    right:0;
+    top:0;
+    width:42%;
+    height:100%;
+    background:
+    linear-gradient(rgba(0,20,60,.7), rgba(0,10,40,.82)),
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.03) 0px,
+        rgba(255,255,255,.03) 2px,
+        transparent 2px,
+        transparent 60px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.03) 0px,
+        rgba(255,255,255,.03) 2px,
+        transparent 2px,
+        transparent 60px
+    );
+    border-left:2px solid rgba(255,255,255,.05);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1;
+}
+
+.menu{
+    width:72%;
+}
+
+.menu button{
+    width:100%;
+    margin:12px 0;
+    padding:12px 16px;
+    font-size:26px;
+    color:white;
+    background:rgba(20,20,30,.65);
+    border:none;
+    cursor:pointer;
+    transition:.25s;
+    position:relative;
+    overflow:hidden;
+    text-align:left;
+    border-radius:4px;
+}
+
+.menu button::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.12),
+        transparent
+    );
+    transform:translateX(-100%);
+    transition:.4s;
+}
+
+.menu button:hover::before{
+    transform:translateX(100%);
+}
+
+.menu button.active{
+    background:linear-gradient(
+        90deg,
+        rgba(120,0,70,.7),
+        rgba(255,0,120,.6),
+        rgba(120,0,70,.7)
+    );
+    box-shadow:0 0 12px rgba(255,0,150,.5);
+}
+
+.footer{
+    position:absolute;
+    bottom:22px;
+    left:30px;
+    color:white;
+    font-size:26px;
+    text-shadow:
+    0 0 5px red,
+    0 0 10px red,
+    0 0 20px red;
+    font-weight:bold;
+    z-index:3;
+    background:rgba(0,0,0,.2);
+    padding:8px 14px;
+}
+
+.quick-desc{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    width:38%;
+    color:white;
+    font-size:20px;
+    background:rgba(255,255,255,.08);
+    padding:14px;
+    z-index:3;
+    border:1px solid rgba(255,255,255,.08);
+    line-height:1.4;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px){
+    body{
+        overflow:auto;
+    }
+
+    .menu-container{
+        position:relative;
+        width:100%;
+        height:auto;
+        min-height:auto;
+        padding:110px 20px 20px;
+        display:block;
+    }
+
+    .menu{
+        width:100%;
+        max-width:900px;
+        margin:0 auto;
+    }
+
+    .content-panel{
+        position:relative;
+        left:auto;
+        top:110px;
+        bottom:auto;
+        width:calc(100% - 40px);
+        margin:0 auto 30px;
+        height:auto;
+        max-height:none;
+    }
+
+    .topbar{
+        position:relative;
+        top:0;
+        left:0;
+        right:0;
+        padding:20px;
+    }
+
+    .site-title{
+        max-width:100%;
+    }
+
+    .footer,
+    .quick-desc{
+        position:relative;
+        left:auto;
+        right:auto;
+        bottom:auto;
+        width:calc(100% - 40px);
+        margin:0 auto 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="stars" id="stars"></div>
+
+<!-- CRISTAIS -->
+<div class="crystal" style="left:5%; width:60px; height:80px; animation-delay:0s;"></div>
+<div class="crystal" style="left:15%; width:45px; height:60px; animation-delay:2s;"></div>
+<div class="crystal" style="left:28%; width:35px; height:50px; animation-delay:4s;"></div>
+<div class="crystal" style="left:42%; width:80px; height:100px; animation-delay:1s;"></div>
+<div class="crystal" style="left:60%; width:30px; height:40px; animation-delay:3s;"></div>
+
+<div class="topbar">
+    <div class="site-title">
+        <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
+        <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
+    </div>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content-panel">
+    
+    <section class="section active" id="download">
+        <h2>Download da Tradução</h2>
+        <p>
+            Aqui você poderá disponibilizar o patch da tradução de <span class="highlight">Digimon World Re:Digitize Decode</span>.
+        </p>
+
+        <div class="download-box">
+            <p><strong>Formato do patch:</strong> .xdelta</p>
+            <p><strong>Compatibilidade:</strong> patch para ser aplicado sobre o dump pessoal correto do jogo.</p>
+            <p><strong>Importante:</strong> o projeto não distribui ROMs.</p>
+
+            <a class="download-button" href="#" target="_blank">Baixar Patch da Tradução</a>
+
+            <p class="note">
+                Substitua o link do botão acima pelo link real do patch.
+            </p>
+        </div>
+
+        <div class="warning">
+            <p>
+                <strong>Aviso:</strong> não apoiamos pirataria. O patch deve ser utilizado apenas com o dump pessoal do seu próprio jogo.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" id="sobre">
+        <h2>Sobre a Tradução</h2>
+        <p>
+            Este projeto tem como objetivo traduzir <span class="highlight">Digimon World Re:Digitize Decode</span> para o português, preservando a identidade do jogo e respeitando, na maior parte, a lore já estabelecida.
+        </p>
+
+        <p>
+            Em alguns casos, certas decisões de nomenclatura foram revistas após discussão em grupo, buscando o melhor equilíbrio entre fidelidade, coerência e naturalidade em português.
+        </p>
+
+        <p>
+            A tradução foi produzida por uma equipe dedicada de fãs, envolvendo tradução, romhacking, edição gráfica, edição de vídeos e apoio geral ao projeto.
+        </p>
+    </section>
+
+    <section class="section" id="faq">
+        <h2>Perguntas Frequentes</h2>
+
+        <div class="faq-item">
+            <div class="question">P: Onde posso baixar a ROM?</div>
+            <div class="answer">
+                R: Em lugar nenhum! Não apoiamos pirataria! Nosso patch deve ser usado com o dump pessoal do seu próprio jogo. Estamos usando o formato <strong>.xdelta</strong> no patch. Esse é um método de patch diferencial, que inclui apenas os dados novos ou diferentes do arquivo original. Portanto, nosso patch é inútil sem um dump correto do jogo. Uma interface do Xdelta está incluída com o patch.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: Por que o jogo fica todo estranho no Citra?</div>
+            <div class="answer">
+                R: Certifique-se de que a opção <strong>"Accurate Multiplication"</strong> esteja marcada nas configurações.
+            </div>
+
+            <img class="faq-image" src="https://i.imgur.com/9O4Dirh.png" alt="Exemplo de problema visual no Citra">
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: Os vídeos rodam muito devagar, eu não consigo pulá-los?!</div>
+            <div class="answer">
+                R: Descobriu-se que Decode não funciona muito bem com o modo <strong>New 3DS Mode</strong> no Citra. Certifique-se de desativar o <strong>New 3DS Mode</strong> e também de definir a velocidade do <strong>CPU Clock para 25%</strong> para obter o melhor desempenho.
+            </div>
+
+            <img class="faq-image" src="https://i.imgur.com/dhqNFjD.png" alt="Configuração recomendada para melhorar os vídeos no Citra">
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: Ei, vocês erraram alguns nomes.</div>
+            <div class="answer">
+                R: Nosso patch de dublagem segue, em sua maior parte, a lore já estabelecida. No entanto, revertemos algumas decisões com as quais não concordamos após uma discussão em grupo.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: Nossa, os personagens xingam bastante.</div>
+            <div class="answer">
+                R: Em muitas localizações oficiais isso é suavizado. Porém, quando isso é algo que define um personagem, acreditamos que é importante que ele mantenha essas características. Fique tranquilo: não adicionamos xingamentos que já não existissem no original.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: O Digitter está todo borrado.</div>
+            <div class="answer">
+                R: Ao usar savestates, a renderização do Digitter fica comprometida. Tenha isso em mente.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">P: Alguns textos parecem… espremidos?</div>
+            <div class="answer">
+                R: O Português ocupa mais espaço do que o japonês e, com o pouco espaço que o 3DS oferece, tivemos que ser criativos. Quando houver nomes de itens mais longos, você poderá encontrar coisas assim. Observe que isso não é um bug, mas sim um comportamento intencional.
+            </div>
+
+            <img class="faq-image" src="https://i.imgur.com/JBseaqz.png" alt="Exemplo de texto espremido na interface">
+        </div>
+    </section>
+
+    <section class="section" id="creditos">
+        <h2>Créditos</h2>
+
+        <div class="credit-group">
+            <h3>Tradutores</h3>
+            <ul>
+                <li>Sora Leon</li>
+                <li>EvertonCable</li>
+                <li>Acelgaman</li>
+                <li>Lucas Miau</li>
+                <li>Espectral</li>
+                <li>Seremontz</li>
+                <li>Fukurokujin</li>
+                <li>CuckooGames</li>
+                <li>Code Vriot</li>
+                <li>Jibril</li>
+                <li>Kantsuna</li>
+                <li>Dark Solaris 1337</li>
+            </ul>
+        </div>
+
+        <div class="credit-group">
+            <h3>Romhacking</h3>
+            <ul>
+                <li>Sora Leon</li>
+            </ul>
+        </div>
+
+        <div class="credit-group">
+            <h3>Editores Gráficos</h3>
+            <ul>
+                <li>Sora Leon</li>
+                <li>Astral</li>
+                <li>Yuki Najimi</li>
+                <li>Ludo</li>
+                <li>Ahtheera</li>
+            </ul>
+        </div>
+
+        <div class="credit-group">
+            <h3>Agradecimentos Especiais</h3>
+            <ul>
+                <li>Joapeer</li>
+                <li>Gledson999</li>
+                <li>Sorinha Phantasie</li>
+                <li>Rick</li>
+                <li>Ethenol</li>
+                <li>Hakase</li>
+            </ul>
+        </div>
+
+        <div class="credit-group">
+            <h3>Editores de Vídeos</h3>
+            <ul>
+                <li>Sora Leon</li>
+                <li>Retr0</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section" id="aplicar">
+        <h2>Como Aplicar o Patch</h2>
+
+        <div class="patch-box">
+            <p>
+                O patch da tradução utiliza o formato <strong>.xdelta</strong>.
+            </p>
+
+            <h3>No Android</h3>
+            <p>
+                Recomendamos usar o aplicativo <strong>APK Rom Patcher</strong> para aplicar o patch.
+            </p>
+
+            <ul>
+                <li>Tenha em mãos o dump pessoal correto do jogo.</li>
+                <li>Baixe o patch da tradução em formato <strong>.xdelta</strong>.</li>
+                <li>Abra o <strong>APK Rom Patcher</strong> no Android.</li>
+                <li>Selecione o arquivo original do jogo.</li>
+                <li>Selecione o patch <strong>.xdelta</strong>.</li>
+                <li>Inicie o processo de aplicação.</li>
+                <li>Após finalizar, utilize o arquivo gerado no seu emulador ou hardware compatível.</li>
+            </ul>
+
+            <div class="warning">
+                <p>
+                    Use sempre um dump limpo e correto do seu próprio jogo. Se a ROM base estiver errada, o patch pode falhar ou gerar problemas.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- MENU -->
+<div class="menu-container">
+    <div class="menu">
+        <button class="active" data-section="download">Download da Tradução</button>
+        <button data-section="sobre">Sobre</button>
+        <button data-section="faq">Perguntas Frequentes</button>
+        <button data-section="creditos">Créditos</button>
+        <button data-section="aplicar">Como Aplicar</button>
+    </div>
+</div>
+
+<div class="footer">
+    Traduzido por Sora Leon \ Projeto da Digi-Translators
+</div>
+
+<div class="quick-desc" id="quickDesc">
+    Baixe o patch da tradução em formato .xdelta para Digimon World Re:Digitize Decode.
+</div>
+
+<script>
+const stars = document.getElementById("stars");
+
+for(let i=0;i<180;i++){
+    const star = document.createElement("div");
+    star.classList.add("star");
+
+    star.style.left = Math.random()*100+"%";
+    star.style.top = Math.random()*100+"%";
+
+    const size = Math.random()*3+1;
+    star.style.width = size+"px";
+    star.style.height = size+"px";
+    star.style.animationDelay = Math.random()*3+"s";
+
+    stars.appendChild(star);
+}
+
+const buttons = document.querySelectorAll(".menu button");
+const sections = document.querySelectorAll(".section");
+const quickDesc = document.getElementById("quickDesc");
+
+const descriptions = {
+    download: "Baixe o patch da tradução em formato .xdelta para Digimon World Re:Digitize Decode.",
+    sobre: "Conheça melhor o projeto de tradução e a proposta da adaptação em português.",
+    faq: "Veja respostas para dúvidas comuns sobre ROM, Citra, vídeos, textos e compatibilidade.",
+    creditos: "Confira a equipe responsável pela tradução, romhacking, arte, vídeos e agradecimentos.",
+    aplicar: "Aprenda como aplicar o patch .xdelta usando o APK Rom Patcher no Android."
+};
+
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        buttons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const target = button.getAttribute("data-section");
+
+        sections.forEach(section => {
+            section.classList.remove("active");
+        });
+
+        const targetSection = document.getElementById(target);
+        targetSection.classList.add("active");
+        
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        
+        quickDesc.textContent = descriptions[target];
+    });
+});
+</script>
+
+</body>
+</html>
