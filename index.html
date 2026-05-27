@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DW Re:Digitize - Contagem Regressiva</title>
+<title>DW Re:Digitize Traduzido EM PT-BR</title>
 <!-- Sua imagem como favicon -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
 <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
@@ -79,7 +79,7 @@ body{
     }
 }
 
-/* TOPBAR - agora com espaço para o relógio */
+/* TOPO */
 .topbar{
     position:absolute;
     top:20px;
@@ -88,9 +88,8 @@ body{
     z-index:3;
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     gap:20px;
-    flex-wrap:wrap;
 }
 
 /* TÍTULO COMO IMAGEM - TAMANHO REDUZIDO */
@@ -108,68 +107,10 @@ body{
     max-width:100%;
     height:auto;
     display:block;
+    /* Forçando um tamanho máximo menor */
     max-height: 80px;
     width: auto;
     margin: 0 auto;
-}
-
-/* RELÓGIO DE CONTAGEM REGRESSIVA - LADO DIREITO */
-.countdown-clock {
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 100, 200, 0.5);
-    border-radius: 20px;
-    padding: 12px 24px;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(255, 0, 120, 0.4);
-    animation: pulseGlow 2s infinite alternate;
-    min-width: 260px;
-}
-
-.countdown-clock .label {
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #ffb7e8;
-    text-shadow: 0 0 5px #ff3399;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-
-.countdown-clock .timer {
-    font-family: 'Courier New', monospace;
-    font-size: 32px;
-    font-weight: bold;
-    color: #fff;
-    text-shadow: 0 0 8px cyan, 0 0 3px magenta;
-    letter-spacing: 2px;
-}
-
-.countdown-clock .timer span {
-    display: inline-block;
-    min-width: 55px;
-    background: rgba(0,0,0,0.5);
-    padding: 4px 6px;
-    border-radius: 12px;
-    margin: 0 2px;
-}
-
-.countdown-clock .sub {
-    font-size: 12px;
-    color: #bbddff;
-    margin-top: 5px;
-    letter-spacing: 1px;
-}
-
-@keyframes pulseGlow {
-    0% {
-        border-color: rgba(255, 100, 200, 0.4);
-        box-shadow: 0 0 12px rgba(255, 0, 120, 0.3);
-    }
-    100% {
-        border-color: rgba(255, 180, 240, 0.9);
-        box-shadow: 0 0 28px rgba(255, 20, 150, 0.7);
-    }
 }
 
 /* CONTEÚDO */
@@ -335,6 +276,120 @@ body{
     opacity:.9;
 }
 
+.patcher-box{
+    margin-top:16px;
+    padding:18px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.patcher-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    margin-top:18px;
+}
+
+.file-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:14px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.file-field label{
+    font-size:20px;
+    color:#93f0ff;
+    font-weight:bold;
+}
+
+.file-field input[type="file"],
+.file-field input[type="text"]{
+    width:100%;
+    padding:12px 14px;
+    font-size:18px;
+    color:white;
+    background:rgba(0,0,0,.28);
+    border:1px solid rgba(255,255,255,.18);
+    outline:none;
+}
+
+.file-field input[type="file"]::file-selector-button{
+    margin-right:14px;
+    padding:10px 14px;
+    border:none;
+    color:white;
+    background:linear-gradient(90deg, rgba(50,90,180,.8), rgba(0,190,255,.55));
+    cursor:pointer;
+}
+
+.patcher-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:18px;
+}
+
+.action-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 18px;
+    font-size:20px;
+    color:white;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    background:linear-gradient(90deg, rgba(35,120,170,.85), rgba(0,215,255,.6));
+    box-shadow:0 0 15px rgba(0,215,255,.2);
+    transition:.25s;
+}
+
+.action-button:hover:not(:disabled){
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(0,215,255,.35);
+}
+
+.action-button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.status-box{
+    margin-top:18px;
+    padding:14px 16px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.05);
+    min-height:60px;
+    white-space:pre-line;
+}
+
+.status-box.loading{
+    border-color:rgba(0,215,255,.4);
+    box-shadow:0 0 15px rgba(0,215,255,.12);
+}
+
+.status-box.success{
+    border-color:rgba(110,255,170,.4);
+    box-shadow:0 0 15px rgba(110,255,170,.12);
+}
+
+.status-box.error{
+    border-color:rgba(255,120,120,.4);
+    box-shadow:0 0 15px rgba(255,120,120,.12);
+}
+
+.status-box strong{
+    color:#8ffcff;
+}
+
+.small-muted{
+    font-size:16px;
+    opacity:.88;
+}
+
 /* MENU - CAIXAS MENORES E SEM SOBREPOSIÇÃO */
 .menu-container{
     position:absolute;
@@ -443,6 +498,104 @@ body{
     line-height:1.4;
 }
 
+.release-countdown{
+    margin:22px 0 20px;
+    padding:20px;
+    background:linear-gradient(135deg, rgba(13,34,78,.92), rgba(57,10,70,.82));
+    border:1px solid rgba(143,252,255,.22);
+    box-shadow:0 0 24px rgba(0,255,255,.08), inset 0 0 24px rgba(255,255,255,.03);
+}
+
+.release-countdown-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:18px;
+}
+
+.release-kicker{
+    font-size:16px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#8ffcff;
+    margin-bottom:6px;
+}
+
+.release-countdown h3{
+    margin:0;
+    font-size:28px;
+    color:#fff;
+}
+
+.release-date-badge{
+    white-space:nowrap;
+    padding:10px 14px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    color:#f7fbff;
+    font-size:16px;
+}
+
+.countdown-grid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:12px;
+}
+
+.countdown-card{
+    padding:16px 12px;
+    text-align:center;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.countdown-number{
+    display:block;
+    font-size:36px;
+    line-height:1;
+    color:#ffffff;
+    text-shadow:0 0 12px rgba(143,252,255,.25);
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.countdown-label{
+    display:block;
+    font-size:15px;
+    color:#bfefff;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.release-countdown-note{
+    margin-top:14px;
+    font-size:16px;
+    color:#edf6ff;
+}
+
+.release-countdown.finished .countdown-grid{
+    grid-template-columns:1fr;
+}
+
+.release-countdown.finished .countdown-card{
+    padding:20px;
+}
+
+@media (max-width: 700px){
+    .release-countdown-header{
+        flex-direction:column;
+    }
+
+    .release-date-badge{
+        white-space:normal;
+    }
+
+    .countdown-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
 /* RESPONSIVO */
 @media (max-width: 1100px){
     body{
@@ -481,19 +634,10 @@ body{
         left:0;
         right:0;
         padding:20px;
-        flex-direction: column;
-        align-items: stretch;
     }
 
     .site-title{
         max-width:100%;
-        margin-bottom: 15px;
-    }
-
-    .countdown-clock {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
     }
 
     .footer,
@@ -526,18 +670,6 @@ body{
         <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
         <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
     </div>
-    
-    <!-- NOVO RELÓGIO DE CONTAGEM REGRESSIVA LADO DIREITO -->
-    <div class="countdown-clock" id="countdownClock">
-        <div class="label">⚡ LANÇAMENTO DO PATCH FINAL ⚡</div>
-        <div class="timer" id="timerDisplay">
-            <span id="days">00</span>d 
-            <span id="hours">00</span>h 
-            <span id="minutes">00</span>m 
-            <span id="seconds">00</span>s
-        </div>
-        <div class="sub">27 de Junho de 2026 — Embarque Digital</div>
-    </div>
 </div>
 
 <!-- CONTEÚDO -->
@@ -549,15 +681,48 @@ body{
             Aqui você poderá disponibilizar o patch da tradução de <span class="highlight">Digimon World Re:Digitize Decode</span>.
         </p>
 
+        <div class="release-countdown" id="releaseCountdown" data-target="2026-06-27T00:00:00-03:00">
+            <div class="release-countdown-header">
+                <div>
+                    <p class="release-kicker">Lançamento do patch final</p>
+                    <h3>Contagem regressiva em tempo real</h3>
+                </div>
+                <div class="release-date-badge">27/06/2026 • 00:00 • Brasília</div>
+            </div>
+
+            <div class="countdown-grid">
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdownDays">--</span>
+                    <span class="countdown-label">Dias</span>
+                </div>
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdownHours">--</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdownMinutes">--</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-card">
+                    <span class="countdown-number" id="countdownSeconds">--</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+
+            <p class="release-countdown-note" id="releaseCountdownNote">
+                Atualização automática a cada segundo até o lançamento do patch final.
+            </p>
+        </div>
+
         <div class="download-box">
-            <p><strong>Formato do patch:</strong> .xdelta</p>
+            <p><strong>Formato do patch:</strong> .vcdiff <span class="small-muted">(compatível com xdelta/VCDIFF)</span></p>
             <p><strong>Compatibilidade:</strong> patch para ser aplicado sobre o dump pessoal correto do jogo.</p>
             <p><strong>Importante:</strong> o projeto não distribui ROMs.</p>
 
-            <a class="download-button" href="https://github.com/SoraLeon/decode/releases/download/r/rr.png" target="_blank">Baixar Patch da Tradução</a>
+            <a class="download-button" href="#" target="_blank">Baixar Patch da Tradução (.vcdiff)</a>
 
             <p class="note">
-                Substitua o link do botão acima pelo link real do patch.
+                Se este botão estiver configurado com o link real do patch, a aba <strong>Aplicador de Patch</strong> também poderá usá-lo automaticamente.
             </p>
         </div>
 
@@ -589,7 +754,7 @@ body{
         <div class="faq-item">
             <div class="question">P: Onde posso baixar a ROM?</div>
             <div class="answer">
-                R: Em lugar nenhum! Não apoiamos pirataria! Nosso patch deve ser usado com o dump pessoal do seu próprio jogo. Estamos usando o formato <strong>.xdelta</strong> no patch. Esse é um método de patch diferencial, que inclui apenas os dados novos ou diferentes do arquivo original. Portanto, nosso patch é inútil sem um dump correto do jogo. Uma interface do Xdelta está incluída com o patch.
+                R: Em lugar nenhum! Não apoiamos pirataria! Nosso patch deve ser usado com o dump pessoal do seu próprio jogo. Estamos usando o formato <strong>.vcdiff</strong> no patch, que é compatível com <strong>xdelta/VCDIFF</strong>. Esse é um método de patch diferencial, que inclui apenas os dados novos ou diferentes do arquivo original. Portanto, nosso patch é inútil sem um dump correto do jogo. O site também pode aplicar o patch diretamente no navegador.
             </div>
         </div>
 
@@ -682,6 +847,13 @@ body{
         </div>
 
         <div class="credit-group">
+            <h3>Revisão & Auxilio</h3>
+            <ul>
+                <li>Hakase</li>
+            </ul>
+        </div>
+
+        <div class="credit-group">
             <h3>Agradecimentos Especiais</h3>
             <ul>
                 <li>Joapeer</li>
@@ -702,25 +874,73 @@ body{
         </div>
     </section>
 
+    <section class="section" id="patcher">
+        <h2>Aplicador de Patch</h2>
+
+        <div class="patcher-box">
+            <p>
+                Gere a ROM traduzida diretamente no navegador. O patch pode estar em <strong>.vcdiff</strong> ou <strong>.xdelta</strong>; ambos são tratados como patch <strong>xdelta/VCDIFF</strong>.
+            </p>
+            <p>
+                Nada é enviado para servidor: os arquivos são processados localmente no seu dispositivo. Em ROMs grandes, o navegador pode precisar de bastante memória RAM para concluir a operação.
+            </p>
+
+            <div class="patcher-grid">
+                <div class="file-field">
+                    <label for="romInput">ROM base do jogo</label>
+                    <input id="romInput" type="file" />
+                    <p class="note">Selecione o dump limpo e correto do seu próprio jogo.</p>
+                </div>
+
+                <div class="file-field">
+                    <label for="patchInput">Patch da tradução (.vcdiff ou .xdelta)</label>
+                    <input id="patchInput" type="file" accept=".vcdiff,.xdelta,.patch,application/octet-stream" />
+                    <p class="note">Se você deixar este campo vazio, o site tentará usar automaticamente o link configurado no botão de download do patch.</p>
+                </div>
+
+                <div class="file-field">
+                    <label for="outputFileName">Nome do arquivo traduzido</label>
+                    <input id="outputFileName" type="text" placeholder="digimon-world-redigitize-decode-ptbr.3ds" />
+                    <p class="note">Você pode manter a extensão original da sua ROM, como .3ds, .cia, .nds, .bin ou outra.</p>
+                </div>
+            </div>
+
+            <div class="patcher-actions">
+                <button class="action-button" id="applyPatchButton" type="button">Aplicar patch e baixar ROM traduzida</button>
+                <button class="action-button" id="clearPatcherButton" type="button">Limpar campos</button>
+            </div>
+
+            <div class="status-box" id="patcherStatus">
+                Selecione a ROM base e o patch .vcdiff/.xdelta para começar.
+            </div>
+
+            <div class="warning">
+                <p>
+                    Use sempre um dump limpo e correto do seu próprio jogo. Se a ROM base estiver errada, o patch pode falhar, gerar erros de VCDIFF ou produzir uma ROM inválida.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="aplicar">
-        <h2>Como Aplicar o Patch</h2>
+        <h2>Como Aplicar Manualmente</h2>
 
         <div class="patch-box">
             <p>
-                O patch da tradução utiliza o formato <strong>.xdelta</strong>.
+                O patch da tradução utiliza o formato <strong>.vcdiff</strong>, compatível com <strong>xdelta/VCDIFF</strong>.
             </p>
 
             <h3>No Android</h3>
             <p>
-                Recomendamos usar o aplicativo <strong>APK Rom Patcher</strong> para aplicar o patch.
+                Recomendamos usar o aplicativo <strong>APK Rom Patcher</strong> para aplicar o patch manualmente.
             </p>
 
             <ul>
                 <li>Tenha em mãos o dump pessoal correto do jogo.</li>
-                <li>Baixe o patch da tradução em formato <strong>.xdelta</strong>.</li>
+                <li>Baixe o patch da tradução em formato <strong>.vcdiff</strong>.</li>
                 <li>Abra o <strong>APK Rom Patcher</strong> no Android.</li>
                 <li>Selecione o arquivo original do jogo.</li>
-                <li>Selecione o patch <strong>.xdelta</strong>.</li>
+                <li>Selecione o patch <strong>.vcdiff</strong>.</li>
                 <li>Inicie o processo de aplicação.</li>
                 <li>Após finalizar, utilize o arquivo gerado no seu emulador ou hardware compatível.</li>
             </ul>
@@ -738,6 +958,7 @@ body{
 <div class="menu-container">
     <div class="menu">
         <button class="active" data-section="download">Download da Tradução</button>
+        <button data-section="patcher">Aplicador de Patch</button>
         <button data-section="sobre">Sobre</button>
         <button data-section="faq">Perguntas Frequentes</button>
         <button data-section="creditos">Créditos</button>
@@ -750,85 +971,86 @@ body{
 </div>
 
 <div class="quick-desc" id="quickDesc">
-    Baixe o patch da tradução em formato .xdelta para Digimon World Re:Digitize Decode.
+    Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode.
 </div>
 
 <script>
-// Geração das estrelas
 const stars = document.getElementById("stars");
+
 for(let i=0;i<180;i++){
     const star = document.createElement("div");
     star.classList.add("star");
+
     star.style.left = Math.random()*100+"%";
     star.style.top = Math.random()*100+"%";
+
     const size = Math.random()*3+1;
     star.style.width = size+"px";
     star.style.height = size+"px";
     star.style.animationDelay = Math.random()*3+"s";
+
     stars.appendChild(star);
 }
 
-// ========== CONTAGEM REGRESSIVA PARA 27/06/2026 ==========
-function startCountdown() {
-    // Data alvo: 27 de Junho de 2026 às 00:00:00 (horário local do navegador)
-    const targetDate = new Date(2026, 5, 27, 0, 0, 0); // mês 5 = Junho (0-index)
-    
-    const daysSpan = document.getElementById("days");
-    const hoursSpan = document.getElementById("hours");
-    const minutesSpan = document.getElementById("minutes");
-    const secondsSpan = document.getElementById("seconds");
-    
-    function updateTimer() {
-        const now = new Date().getTime();
-        const targetTime = targetDate.getTime();
-        const distance = targetTime - now;
-        
-        if (distance < 0) {
-            // Contagem encerrada: exibir mensagem especial
-            daysSpan.innerText = "00";
-            hoursSpan.innerText = "00";
-            minutesSpan.innerText = "00";
-            secondsSpan.innerText = "00";
-            const clockDiv = document.getElementById("countdownClock");
-            if (clockDiv) {
-                const labelElement = clockDiv.querySelector(".label");
-                if (labelElement) labelElement.innerHTML = "✨ PATCH DISPONÍVEL ✨";
-                const subElement = clockDiv.querySelector(".sub");
-                if (subElement) subElement.innerHTML = "Tradução Final Liberada! Aproveite!";
-            }
-            return;
-        }
-        
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        daysSpan.innerText = days < 10 ? "0" + days : days;
-        hoursSpan.innerText = hours < 10 ? "0" + hours : hours;
-        minutesSpan.innerText = minutes < 10 ? "0" + minutes : minutes;
-        secondsSpan.innerText = seconds < 10 ? "0" + seconds : seconds;
-    }
-    
-    updateTimer();
-    setInterval(updateTimer, 1000);
-}
-
-// Iniciar a contagem ao carregar a página
-startCountdown();
-
-// ========== FUNCIONALIDADE DO MENU ==========
 const buttons = document.querySelectorAll(".menu button");
 const sections = document.querySelectorAll(".section");
 const quickDesc = document.getElementById("quickDesc");
+const releaseCountdown = document.getElementById("releaseCountdown");
+const countdownDays = document.getElementById("countdownDays");
+const countdownHours = document.getElementById("countdownHours");
+const countdownMinutes = document.getElementById("countdownMinutes");
+const countdownSeconds = document.getElementById("countdownSeconds");
+const releaseCountdownNote = document.getElementById("releaseCountdownNote");
 
 const descriptions = {
-    download: "Baixe o patch da tradução em formato .xdelta para Digimon World Re:Digitize Decode.",
+    download: "Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode e acompanhe a contagem regressiva para o patch final.",
+    patcher: "Escolha a ROM base e o patch .vcdiff/.xdelta para gerar a ROM traduzida diretamente no navegador.",
     sobre: "Conheça melhor o projeto de tradução e a proposta da adaptação em português.",
     faq: "Veja respostas para dúvidas comuns sobre ROM, Citra, vídeos, textos e compatibilidade.",
     creditos: "Confira a equipe responsável pela tradução, romhacking, arte, vídeos e agradecimentos.",
-    aplicar: "Aprenda como aplicar o patch .xdelta usando o APK Rom Patcher no Android."
+    aplicar: "Aprenda como aplicar o patch manualmente usando o APK Rom Patcher no Android."
 };
+
+function updateReleaseCountdown() {
+    if (!releaseCountdown) return;
+
+    const targetIso = releaseCountdown.dataset.target;
+    const targetTime = new Date(targetIso).getTime();
+    const now = Date.now();
+    const diff = targetTime - now;
+
+    if (Number.isNaN(targetTime)) {
+        releaseCountdownNote.textContent = "Data de lançamento inválida no contador.";
+        return;
+    }
+
+    if (diff <= 0) {
+        releaseCountdown.classList.add("finished");
+        countdownDays.textContent = "00";
+        countdownHours.textContent = "00";
+        countdownMinutes.textContent = "00";
+        countdownSeconds.textContent = "00";
+        releaseCountdownNote.textContent = "O dia 27 de junho chegou. Patch final liberado!";
+        return;
+    }
+
+    releaseCountdown.classList.remove("finished");
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    countdownDays.textContent = String(days).padStart(2, "0");
+    countdownHours.textContent = String(hours).padStart(2, "0");
+    countdownMinutes.textContent = String(minutes).padStart(2, "0");
+    countdownSeconds.textContent = String(seconds).padStart(2, "0");
+    releaseCountdownNote.textContent = "Contagem baseada em 27/06/2026 às 00:00 no horário de Brasília.";
+}
+
+updateReleaseCountdown();
+setInterval(updateReleaseCountdown, 1000);
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
@@ -842,18 +1064,331 @@ buttons.forEach(button => {
         });
 
         const targetSection = document.getElementById(target);
-        if (targetSection) {
-            targetSection.classList.add("active");
-            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        targetSection.classList.add("active");
         
-        if (descriptions[target]) {
-            quickDesc.textContent = descriptions[target];
-        } else {
-            quickDesc.textContent = "Digimon World Re:Digitize Decode - Tradução PT-BR";
-        }
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        
+        quickDesc.textContent = descriptions[target];
     });
 });
+
+const romInput = document.getElementById("romInput");
+const patchInput = document.getElementById("patchInput");
+const outputFileName = document.getElementById("outputFileName");
+const applyPatchButton = document.getElementById("applyPatchButton");
+const clearPatcherButton = document.getElementById("clearPatcherButton");
+const patcherStatus = document.getElementById("patcherStatus");
+const downloadPatchButton = document.querySelector("#download .download-button");
+
+let patchWorker = null;
+let romPatcherDepsPromise = null;
+
+const ROM_PATCHER_SCRIPT_PATHS = [
+    "./rom-patcher-js/modules/BinFile.js",
+    "./rom-patcher-js/modules/HashCalculator.js",
+    "./rom-patcher-js/modules/RomPatcher.format.ips.js",
+    "./rom-patcher-js/modules/RomPatcher.format.ups.js",
+    "./rom-patcher-js/modules/RomPatcher.format.aps_n64.js",
+    "./rom-patcher-js/modules/RomPatcher.format.aps_gba.js",
+    "./rom-patcher-js/modules/RomPatcher.format.bps.js",
+    "./rom-patcher-js/modules/RomPatcher.format.rup.js",
+    "./rom-patcher-js/modules/RomPatcher.format.ppf.js",
+    "./rom-patcher-js/modules/RomPatcher.format.bdf.js",
+    "./rom-patcher-js/modules/RomPatcher.format.pmsr.js",
+    "./rom-patcher-js/modules/RomPatcher.format.vcdiff.js",
+    "./rom-patcher-js/modules/zip.js/zip.min.js",
+    "./rom-patcher-js/RomPatcher.js"
+];
+
+function setPatcherStatus(message, type = "") {
+    patcherStatus.className = `status-box${type ? ` ${type}` : ""}`;
+    patcherStatus.textContent = message;
+}
+
+function formatBytes(bytes) {
+    if (!Number.isFinite(bytes) || bytes <= 0) return "0 B";
+    const units = ["B", "KB", "MB", "GB", "TB"];
+    const exponent = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+    const value = bytes / (1024 ** exponent);
+    return `${value.toFixed(value >= 10 || exponent === 0 ? 0 : 1)} ${units[exponent]}`;
+}
+
+function getBaseName(filename) {
+    return filename.replace(/\.[^/.]+$/, "");
+}
+
+function getExtension(filename) {
+    const match = filename.match(/(\.[^./\\]+)$/);
+    return match ? match[1] : ".bin";
+}
+
+function suggestOutputName() {
+    const romFile = romInput.files?.[0];
+    if (!romFile) return;
+    outputFileName.value = `${getBaseName(romFile.name)} [PT-BR]${getExtension(romFile.name)}`;
+}
+
+function hasConfiguredPatchUrl() {
+    if (!downloadPatchButton) return false;
+    const href = downloadPatchButton.getAttribute("href");
+    return Boolean(href && href.trim() && href.trim() !== "#");
+}
+
+async function getPatchData() {
+    const selectedPatch = patchInput.files?.[0];
+    if (selectedPatch) {
+        return {
+            bytes: new Uint8Array(await selectedPatch.arrayBuffer()),
+            name: selectedPatch.name,
+            source: "arquivo selecionado"
+        };
+    }
+
+    if (!hasConfiguredPatchUrl()) {
+        throw new Error("Nenhum patch foi selecionado e o botão de download ainda não possui um link real configurado.");
+    }
+
+    setPatcherStatus("Baixando o patch configurado no site...", "loading");
+
+    let response;
+    try {
+        response = await fetch(downloadPatchButton.href);
+    } catch (error) {
+        throw new Error("Falha ao baixar o patch pelo link configurado. Se o patch estiver em outro domínio, verifique CORS ou selecione o arquivo .vcdiff manualmente.");
+    }
+
+    if (!response.ok) {
+        throw new Error(`Não foi possível baixar o patch do site (${response.status}).`);
+    }
+
+    const patchNameFromUrl = downloadPatchButton.href.split("/").pop()?.split("?")[0] || "patch.vcdiff";
+    return {
+        bytes: new Uint8Array(await response.arrayBuffer()),
+        name: patchNameFromUrl,
+        source: "link configurado no botão de download"
+    };
+}
+
+function loadScriptSequentially(src) {
+    return new Promise((resolve, reject) => {
+        const existingScript = document.querySelector(`script[data-rom-patcher-src="${src}"]`);
+        if (existingScript) {
+            if (existingScript.dataset.loaded === "true") {
+                resolve();
+            } else {
+                existingScript.addEventListener("load", () => resolve(), { once: true });
+                existingScript.addEventListener("error", () => reject(new Error(`Falha ao carregar ${src}`)), { once: true });
+            }
+            return;
+        }
+
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = false;
+        script.dataset.romPatcherSrc = src;
+        script.addEventListener("load", () => {
+            script.dataset.loaded = "true";
+            resolve();
+        }, { once: true });
+        script.addEventListener("error", () => reject(new Error(`Falha ao carregar ${src}`)), { once: true });
+        document.head.appendChild(script);
+    });
+}
+
+async function loadRomPatcherDependencies() {
+    if (window.BinFile && window.RomPatcher) return;
+    if (!romPatcherDepsPromise) {
+        romPatcherDepsPromise = (async () => {
+            for (const scriptPath of ROM_PATCHER_SCRIPT_PATHS) {
+                await loadScriptSequentially(scriptPath);
+            }
+        })();
+    }
+    return romPatcherDepsPromise;
+}
+
+function ensurePatchWorker() {
+    if (patchWorker) return patchWorker;
+    patchWorker = new Worker("./rom-patcher-js/RomPatcher.webworker.apply.js");
+    return patchWorker;
+}
+
+function applyPatchWithWorker(romBytes, romName, patchBytes, patchName) {
+    return new Promise((resolve, reject) => {
+        const worker = ensurePatchWorker();
+
+        const cleanup = () => {
+            worker.removeEventListener("message", onMessage);
+            worker.removeEventListener("error", onError);
+        };
+
+        const onMessage = (event) => {
+            cleanup();
+            const data = event.data || {};
+            if (data.patchedRomU8Array) {
+                resolve({
+                    output: new Uint8Array(data.patchedRomU8Array),
+                    suggestedName: data.patchedRomFileName || romName
+                });
+            } else {
+                reject(new Error(data.errorMessage || "Falha desconhecida ao aplicar o patch."));
+            }
+        };
+
+        const onError = () => {
+            cleanup();
+            reject(new Error("O navegador não conseguiu iniciar o worker do aplicador. Confirme se a pasta rom-patcher-js está ao lado do HTML e se o arquivo está sendo servido corretamente."));
+        };
+
+        worker.addEventListener("message", onMessage);
+        worker.addEventListener("error", onError);
+        worker.postMessage(
+            {
+                romFileU8Array: romBytes,
+                romFileName: romName,
+                patchFileU8Array: patchBytes,
+                patchFileName: patchName,
+                options: {
+                    requireValidation: false,
+                    removeHeader: false,
+                    addHeader: false,
+                    fixChecksum: false,
+                    outputSuffix: false
+                }
+            },
+            [romBytes.buffer, patchBytes.buffer]
+        );
+    });
+}
+
+async function applyPatchInMainThread(romBytes, romName, patchBytes, patchName) {
+    await loadRomPatcherDependencies();
+
+    const romFile = new BinFile(romBytes);
+    romFile.fileName = romName;
+
+    const patchFile = new BinFile(patchBytes);
+    patchFile.fileName = patchName;
+
+    const parsedPatch = RomPatcher.parsePatchFile(patchFile);
+    if (!parsedPatch) {
+        throw new Error("O arquivo de patch não foi reconhecido. Use um patch válido em formato .vcdiff/.xdelta compatível.");
+    }
+
+    const patchedRom = RomPatcher.applyPatch(romFile, parsedPatch, {
+        requireValidation: false,
+        removeHeader: false,
+        addHeader: false,
+        fixChecksum: false,
+        outputSuffix: false
+    });
+
+    return {
+        output: new Uint8Array(patchedRom._u8array.buffer.slice(0)),
+        suggestedName: patchedRom.fileName || romName
+    };
+}
+
+async function applyPatch(romBytes, romName, patchBytes, patchName) {
+    const shouldUseMainThread = location.protocol === "file:";
+
+    if (shouldUseMainThread) {
+        setPatcherStatus("Arquivo aberto localmente detectado. Aplicando o patch sem worker para evitar o bloqueio do navegador...", "loading");
+        return applyPatchInMainThread(romBytes, romName, patchBytes, patchName);
+    }
+
+    try {
+        return await applyPatchWithWorker(romBytes, romName, patchBytes, patchName);
+    } catch (error) {
+        const message = String(error && error.message ? error.message : error);
+        const workerBlocked = /worker|origin 'null'|cannot be accessed/i.test(message);
+        if (!workerBlocked) {
+            throw error;
+        }
+
+        setPatcherStatus("Worker bloqueado pelo navegador. Tentando aplicar o patch no mesmo processo da página...", "loading");
+        return applyPatchInMainThread(romBytes, romName, patchBytes, patchName);
+    }
+}
+
+function triggerDownload(fileName, bytes) {
+    const blob = new Blob([bytes], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function resetPatcherFields() {
+    romInput.value = "";
+    patchInput.value = "";
+    outputFileName.value = "";
+    setPatcherStatus("Selecione a ROM base e o patch .vcdiff/.xdelta para começar.");
+}
+
+romInput?.addEventListener("change", suggestOutputName);
+clearPatcherButton?.addEventListener("click", resetPatcherFields);
+
+applyPatchButton?.addEventListener("click", async () => {
+    const romFile = romInput.files?.[0];
+
+    if (!romFile) {
+        setPatcherStatus("Selecione primeiro a ROM base do jogo.", "error");
+        return;
+    }
+
+    applyPatchButton.disabled = true;
+
+    try {
+        setPatcherStatus("Carregando ROM e aplicador baseado em rom-patcher-js...", "loading");
+
+        const [patchData, romBytesBuffer] = await Promise.all([
+            getPatchData(),
+            romFile.arrayBuffer()
+        ]);
+
+        const romBytes = new Uint8Array(romBytesBuffer);
+        const patchBytes = patchData.bytes;
+
+        setPatcherStatus(
+            `Aplicando patch...
+ROM: ${formatBytes(romBytes.byteLength)}
+Patch: ${formatBytes(patchBytes.byteLength)} (${patchData.source})
+Motor: RomPatcher.js / VCDIFF`,
+            "loading"
+        );
+
+        const result = await applyPatch(romBytes, romFile.name, patchBytes, patchData.name);
+        const finalName = (outputFileName.value || `${getBaseName(romFile.name)} [PT-BR]${getExtension(romFile.name)}`).trim();
+
+        triggerDownload(finalName, result.output);
+
+        setPatcherStatus(
+            `ROM traduzida gerada com sucesso!
+Arquivo final: ${finalName}
+Tamanho de saída: ${formatBytes(result.output.byteLength)}
+O download foi iniciado automaticamente.`,
+            "success"
+        );
+    } catch (error) {
+        console.error(error);
+        setPatcherStatus(
+            `${error.message}
+
+Se o problema persistir, confira se a ROM base está limpa, se o patch é realmente .vcdiff/.xdelta e se a pasta rom-patcher-js acompanha este HTML.`,
+            "error"
+        );
+    } finally {
+        applyPatchButton.disabled = false;
+    }
+});
 </script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
 </body>
 </html>
