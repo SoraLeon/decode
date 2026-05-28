@@ -107,7 +107,6 @@ body{
     max-width:100%;
     height:auto;
     display:block;
-    /* Forçando um tamanho máximo menor */
     max-height: 80px;
     width: auto;
     margin: 0 auto;
@@ -240,6 +239,60 @@ body{
 
 .credit-group h3{
     margin-top:0;
+}
+
+.social-links{
+    margin-top:20px;
+    padding:16px;
+    background:linear-gradient(135deg, rgba(13,34,78,.92), rgba(57,10,70,.82));
+    border:1px solid rgba(143,252,255,.22);
+    border-radius:8px;
+    text-align:center;
+}
+
+.social-links h3{
+    margin-top:0;
+    margin-bottom:15px;
+    font-size:24px;
+    color:#8ffcff;
+}
+
+.social-buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.social-button{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 24px;
+    font-size:18px;
+    font-weight:bold;
+    color:white;
+    text-decoration:none;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:8px;
+    transition:.25s;
+}
+
+.social-button:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.2);
+    box-shadow:0 0 15px rgba(143,252,255,.3);
+}
+
+.social-button.youtube:hover{
+    border-color:#ff0000;
+    box-shadow:0 0 15px rgba(255,0,0,.3);
+}
+
+.social-button.discord:hover{
+    border-color:#5865F2;
+    box-shadow:0 0 15px rgba(88,101,242,.3);
 }
 
 .faq-item{
@@ -484,6 +537,24 @@ body{
     padding:8px 14px;
 }
 
+.footer-links{
+    display:flex;
+    gap:15px;
+    margin-top:8px;
+}
+
+.footer-links a{
+    color:#8ffcff;
+    text-decoration:none;
+    font-size:16px;
+    transition:.25s;
+}
+
+.footer-links a:hover{
+    text-shadow:0 0 8px #8ffcff;
+    text-decoration:underline;
+}
+
 .quick-desc{
     position:absolute;
     bottom:20px;
@@ -667,7 +738,6 @@ body{
 
 <div class="topbar">
     <div class="site-title">
-        <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
         <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
     </div>
 </div>
@@ -680,6 +750,18 @@ body{
         <p>
             Aqui você poderá disponibilizar o patch da tradução de <span class="highlight">Digimon World Re:Digitize Decode</span>.
         </p>
+
+        <div class="social-links">
+            <h3>🔗 Acompanhe o Projeto</h3>
+            <div class="social-buttons">
+                <a href="https://www.youtube.com/@SoraLeon/" target="_blank" class="social-button youtube">
+                    📺 YouTube
+                </a>
+                <a href="https://discord.gg/crqTbSdctp" target="_blank" class="social-button discord">
+                    💬 Discord
+                </a>
+            </div>
+        </div>
 
         <div class="release-countdown" id="releaseCountdown" data-target="2026-06-27T00:00:00-03:00">
             <div class="release-countdown-header">
@@ -967,7 +1049,11 @@ body{
 </div>
 
 <div class="footer">
-    Traduzido por Sora Leon \ Projeto da Digi-Translators
+    <div>Traduzido por Sora Leon \ Projeto da Digi-Translators</div>
+    <div class="footer-links">
+        <a href="https://www.youtube.com/@SoraLeon/" target="_blank">▶ YouTube</a>
+        <a href="https://discord.gg/crqTbSdctp" target="_blank">💬 Discord</a>
+    </div>
 </div>
 
 <div class="quick-desc" id="quickDesc">
@@ -1389,6 +1475,5 @@ Se o problema persistir, confira se a ROM base está limpa, se o patch é realme
 </script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
 </body>
 </html>
