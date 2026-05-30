@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DW Re:Digitize Traduzido EM PT-BR</title>
+<title>DW Re:Digitize Decode</title>
 <!-- Sua imagem como favicon -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
 <link rel="shortcut icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
@@ -107,6 +107,7 @@ body{
     max-width:100%;
     height:auto;
     display:block;
+    /* Forçando um tamanho máximo menor */
     max-height: 80px;
     width: auto;
     margin: 0 auto;
@@ -239,60 +240,6 @@ body{
 
 .credit-group h3{
     margin-top:0;
-}
-
-.social-links{
-    margin-top:20px;
-    padding:16px;
-    background:linear-gradient(135deg, rgba(13,34,78,.92), rgba(57,10,70,.82));
-    border:1px solid rgba(143,252,255,.22);
-    border-radius:8px;
-    text-align:center;
-}
-
-.social-links h3{
-    margin-top:0;
-    margin-bottom:15px;
-    font-size:24px;
-    color:#8ffcff;
-}
-
-.social-buttons{
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.social-button{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:12px 24px;
-    font-size:18px;
-    font-weight:bold;
-    color:white;
-    text-decoration:none;
-    background:rgba(255,255,255,.1);
-    border:1px solid rgba(255,255,255,.2);
-    border-radius:8px;
-    transition:.25s;
-}
-
-.social-button:hover{
-    transform:translateY(-2px);
-    background:rgba(255,255,255,.2);
-    box-shadow:0 0 15px rgba(143,252,255,.3);
-}
-
-.social-button.youtube:hover{
-    border-color:#ff0000;
-    box-shadow:0 0 15px rgba(255,0,0,.3);
-}
-
-.social-button.discord:hover{
-    border-color:#5865F2;
-    box-shadow:0 0 15px rgba(88,101,242,.3);
 }
 
 .faq-item{
@@ -537,24 +484,6 @@ body{
     padding:8px 14px;
 }
 
-.footer-links{
-    display:flex;
-    gap:15px;
-    margin-top:8px;
-}
-
-.footer-links a{
-    color:#8ffcff;
-    text-decoration:none;
-    font-size:16px;
-    transition:.25s;
-}
-
-.footer-links a:hover{
-    text-shadow:0 0 8px #8ffcff;
-    text-decoration:underline;
-}
-
 .quick-desc{
     position:absolute;
     bottom:20px;
@@ -567,104 +496,6 @@ body{
     z-index:3;
     border:1px solid rgba(255,255,255,.08);
     line-height:1.4;
-}
-
-.release-countdown{
-    margin:22px 0 20px;
-    padding:20px;
-    background:linear-gradient(135deg, rgba(13,34,78,.92), rgba(57,10,70,.82));
-    border:1px solid rgba(143,252,255,.22);
-    box-shadow:0 0 24px rgba(0,255,255,.08), inset 0 0 24px rgba(255,255,255,.03);
-}
-
-.release-countdown-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:18px;
-}
-
-.release-kicker{
-    font-size:16px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#8ffcff;
-    margin-bottom:6px;
-}
-
-.release-countdown h3{
-    margin:0;
-    font-size:28px;
-    color:#fff;
-}
-
-.release-date-badge{
-    white-space:nowrap;
-    padding:10px 14px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.12);
-    color:#f7fbff;
-    font-size:16px;
-}
-
-.countdown-grid{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:12px;
-}
-
-.countdown-card{
-    padding:16px 12px;
-    text-align:center;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.1);
-}
-
-.countdown-number{
-    display:block;
-    font-size:36px;
-    line-height:1;
-    color:#ffffff;
-    text-shadow:0 0 12px rgba(143,252,255,.25);
-    margin-bottom:8px;
-    font-weight:bold;
-}
-
-.countdown-label{
-    display:block;
-    font-size:15px;
-    color:#bfefff;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-}
-
-.release-countdown-note{
-    margin-top:14px;
-    font-size:16px;
-    color:#edf6ff;
-}
-
-.release-countdown.finished .countdown-grid{
-    grid-template-columns:1fr;
-}
-
-.release-countdown.finished .countdown-card{
-    padding:20px;
-}
-
-@media (max-width: 700px){
-    .release-countdown-header{
-        flex-direction:column;
-    }
-
-    .release-date-badge{
-        white-space:normal;
-    }
-
-    .countdown-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-    }
 }
 
 /* RESPONSIVO */
@@ -738,6 +569,7 @@ body{
 
 <div class="topbar">
     <div class="site-title">
+        <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
         <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
     </div>
 </div>
@@ -751,61 +583,14 @@ body{
             Aqui você poderá disponibilizar o patch da tradução de <span class="highlight">Digimon World Re:Digitize Decode</span>.
         </p>
 
-        <div class="social-links">
-            <h3>🔗 Acompanhe o Projeto</h3>
-            <div class="social-buttons">
-                <a href="https://www.youtube.com/@SoraLeon/" target="_blank" class="social-button youtube">
-                    📺 YouTube
-                </a>
-                <a href="https://discord.gg/crqTbSdctp" target="_blank" class="social-button discord">
-                    💬 Discord
-                </a>
-            </div>
-        </div>
-
-        <div class="release-countdown" id="releaseCountdown" data-target="2026-06-27T00:00:00-03:00">
-            <div class="release-countdown-header">
-                <div>
-                    <p class="release-kicker">Lançamento do patch final</p>
-                    <h3>Contagem regressiva em tempo real</h3>
-                </div>
-                <div class="release-date-badge">27/06/2026 • 00:00 • Brasília</div>
-            </div>
-
-            <div class="countdown-grid">
-                <div class="countdown-card">
-                    <span class="countdown-number" id="countdownDays">--</span>
-                    <span class="countdown-label">Dias</span>
-                </div>
-                <div class="countdown-card">
-                    <span class="countdown-number" id="countdownHours">--</span>
-                    <span class="countdown-label">Horas</span>
-                </div>
-                <div class="countdown-card">
-                    <span class="countdown-number" id="countdownMinutes">--</span>
-                    <span class="countdown-label">Minutos</span>
-                </div>
-                <div class="countdown-card">
-                    <span class="countdown-number" id="countdownSeconds">--</span>
-                    <span class="countdown-label">Segundos</span>
-                </div>
-            </div>
-
-            <p class="release-countdown-note" id="releaseCountdownNote">
-                Atualização automática a cada segundo até o lançamento do patch final.
-            </p>
-        </div>
-
         <div class="download-box">
             <p><strong>Formato do patch:</strong> .vcdiff <span class="small-muted">(compatível com xdelta/VCDIFF)</span></p>
             <p><strong>Compatibilidade:</strong> patch para ser aplicado sobre o dump pessoal correto do jogo.</p>
             <p><strong>Importante:</strong> o projeto não distribui ROMs.</p>
 
-            <a class="download-button" href="#" target="_blank">Baixar Patch da Tradução (.vcdiff)</a>
+            <a class="download-button" href="https://github.com/SoraLeon/decode/releases/download/r/decode.rar" target="_blank">Baixar Patch da Tradução (.vcdiff)</a>
 
-            <p class="note">
-                Se este botão estiver configurado com o link real do patch, a aba <strong>Aplicador de Patch</strong> também poderá usá-lo automaticamente.
-            </p>
+            
         </div>
 
         <div class="warning">
@@ -1049,11 +834,7 @@ body{
 </div>
 
 <div class="footer">
-    <div>Traduzido por Sora Leon \ Projeto da Digi-Translators</div>
-    <div class="footer-links">
-        <a href="https://www.youtube.com/@SoraLeon/" target="_blank">▶ YouTube</a>
-        <a href="https://discord.gg/crqTbSdctp" target="_blank">💬 Discord</a>
-    </div>
+    Traduzido por Sora Leon \ Projeto da Digi-Translators
 </div>
 
 <div class="quick-desc" id="quickDesc">
@@ -1081,62 +862,15 @@ for(let i=0;i<180;i++){
 const buttons = document.querySelectorAll(".menu button");
 const sections = document.querySelectorAll(".section");
 const quickDesc = document.getElementById("quickDesc");
-const releaseCountdown = document.getElementById("releaseCountdown");
-const countdownDays = document.getElementById("countdownDays");
-const countdownHours = document.getElementById("countdownHours");
-const countdownMinutes = document.getElementById("countdownMinutes");
-const countdownSeconds = document.getElementById("countdownSeconds");
-const releaseCountdownNote = document.getElementById("releaseCountdownNote");
 
 const descriptions = {
-    download: "Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode e acompanhe a contagem regressiva para o patch final.",
+    download: "Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode.",
     patcher: "Escolha a ROM base e o patch .vcdiff/.xdelta para gerar a ROM traduzida diretamente no navegador.",
     sobre: "Conheça melhor o projeto de tradução e a proposta da adaptação em português.",
     faq: "Veja respostas para dúvidas comuns sobre ROM, Citra, vídeos, textos e compatibilidade.",
     creditos: "Confira a equipe responsável pela tradução, romhacking, arte, vídeos e agradecimentos.",
     aplicar: "Aprenda como aplicar o patch manualmente usando o APK Rom Patcher no Android."
 };
-
-function updateReleaseCountdown() {
-    if (!releaseCountdown) return;
-
-    const targetIso = releaseCountdown.dataset.target;
-    const targetTime = new Date(targetIso).getTime();
-    const now = Date.now();
-    const diff = targetTime - now;
-
-    if (Number.isNaN(targetTime)) {
-        releaseCountdownNote.textContent = "Data de lançamento inválida no contador.";
-        return;
-    }
-
-    if (diff <= 0) {
-        releaseCountdown.classList.add("finished");
-        countdownDays.textContent = "00";
-        countdownHours.textContent = "00";
-        countdownMinutes.textContent = "00";
-        countdownSeconds.textContent = "00";
-        releaseCountdownNote.textContent = "O dia 27 de junho chegou. Patch final liberado!";
-        return;
-    }
-
-    releaseCountdown.classList.remove("finished");
-
-    const totalSeconds = Math.floor(diff / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    countdownDays.textContent = String(days).padStart(2, "0");
-    countdownHours.textContent = String(hours).padStart(2, "0");
-    countdownMinutes.textContent = String(minutes).padStart(2, "0");
-    countdownSeconds.textContent = String(seconds).padStart(2, "0");
-    releaseCountdownNote.textContent = "Contagem baseada em 27/06/2026 às 00:00 no horário de Brasília.";
-}
-
-updateReleaseCountdown();
-setInterval(updateReleaseCountdown, 1000);
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
@@ -1475,5 +1209,6 @@ Se o problema persistir, confira se a ROM base está limpa, se o patch é realme
 </script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
 </body>
 </html>
