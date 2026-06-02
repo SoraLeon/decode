@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>DW Re:Digitize Decode</title>
 <!-- Sua imagem como favicon -->
 <link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
@@ -207,6 +208,47 @@ body{
     padding:16px;
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.12);
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    margin-top:18px;
+    padding-bottom:56.25%;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 0 20px rgba(0,0,0,.35);
+    background:rgba(0,0,0,.45);
+}
+
+.video-wrapper iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.video-link-card{
+    display:block;
+    margin-top:18px;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 0 20px rgba(0,0,0,.35);
+    text-decoration:none;
+    color:white;
+    background:rgba(0,0,0,.45);
+    overflow:hidden;
+}
+
+.video-link-card img{
+    width:100%;
+    display:block;
+}
+
+.video-link-card span{
+    display:block;
+    padding:12px 14px;
+    font-size:20px;
+    color:#8ffcff;
 }
 
 .download-button{
@@ -790,27 +832,26 @@ body{
     </section>
 
     <section class="section" id="aplicar">
-        <h2>Como Aplicar Manualmente</h2>
+        <h2>Como Aplicar o Patch</h2>
 
         <div class="patch-box">
             <p>
-                O patch da tradução utiliza o formato <strong>.vcdiff</strong>, compatível com <strong>xdelta/VCDIFF</strong>.
+                Assista ao vídeo abaixo para entender como aplicar o patch da tradução no jogo.
             </p>
 
-            <h3>No Android</h3>
+            <a
+                class="video-link-card"
+                href="https://www.youtube.com/watch?v=8twVx60RTY4"
+                target="_blank"
+                rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/8twVx60RTY4/maxresdefault.jpg" alt="Miniatura do vídeo de como aplicar o patch">
+                <span>Clique para assistir no YouTube (abre em nova aba)</span>
+            </a>
+
             <p>
-                Recomendamos usar o aplicativo <strong>APK Rom Patcher</strong> para aplicar o patch manualmente.
+                Se preferir, você também pode abrir o vídeo diretamente no YouTube:
+                <a class="download-button" href="https://www.youtube.com/watch?v=8twVx60RTY4" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
             </p>
-
-            <ul>
-                <li>Tenha em mãos o dump pessoal correto do jogo.</li>
-                <li>Baixe o patch da tradução em formato <strong>.vcdiff</strong>.</li>
-                <li>Abra o <strong>APK Rom Patcher</strong> no Android.</li>
-                <li>Selecione o arquivo original do jogo.</li>
-                <li>Selecione o patch <strong>.vcdiff</strong>.</li>
-                <li>Inicie o processo de aplicação.</li>
-                <li>Após finalizar, utilize o arquivo gerado no seu emulador ou hardware compatível.</li>
-            </ul>
 
             <div class="warning">
                 <p>
@@ -869,7 +910,7 @@ const descriptions = {
     sobre: "Conheça melhor o projeto de tradução e a proposta da adaptação em português.",
     faq: "Veja respostas para dúvidas comuns sobre ROM, Citra, vídeos, textos e compatibilidade.",
     creditos: "Confira a equipe responsável pela tradução, romhacking, arte, vídeos e agradecimentos.",
-    aplicar: "Aprenda como aplicar o patch manualmente usando o APK Rom Patcher no Android."
+    aplicar: "Veja um vídeo explicando como aplicar o patch da tradução no jogo."
 };
 
 buttons.forEach(button => {
@@ -1210,5 +1251,6 @@ Se o problema persistir, confira se a ROM base está limpa, se o patch é realme
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
