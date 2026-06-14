@@ -1,4 +1,13 @@
-https://chat.deepseek.com/a/chat/s/2aa7a95b-3a60-46fe-84d3-b7f55c039676#:~:text=Run-,%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22pt%2DBR,libs/font%2Dawesome/6.0.0%2Dbeta3/css/all.min.css%22%3E,-%3Cstyle%3E
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>DW Re:Digitize Decode</title>
+<!-- Sua imagem como favicon -->
+<link rel="icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
+<link rel="shortcut icon" type="image/png" href="https://i.imgur.com/cYsuXTt.png">
 
 <style>
 *{
@@ -102,6 +111,7 @@ body{
     max-width:100%;
     height:auto;
     display:block;
+    /* Forçando um tamanho máximo menor */
     max-height: 80px;
     width: auto;
     margin: 0 auto;
@@ -909,6 +919,7 @@ body{
 
 <div class="topbar">
     <div class="site-title">
+        <!-- TÍTULO COMO IMAGEM - TAMANHO REDUZIDO -->
         <img src="https://i.imgur.com/cYsuXTt.png" alt="Digimon World Re:Digitize Decode - Tradução PT-BR">
     </div>
 </div>
@@ -928,6 +939,7 @@ body{
     <source src="https://files.catbox.moe/o2k6ag.mp3" type="audio/mpeg">
 </audio>
 
+<!-- MENU -->
 <div class="menu-container">
     <div class="menu">
         <button class="active" data-section="download">Download da Tradução</button>
@@ -944,6 +956,7 @@ body{
     </div>
 </div>
 
+<!-- CONTEÚDO -->
 <div class="content-panel">
     
     <section class="section active" id="download">
@@ -958,6 +971,8 @@ body{
             <p><strong>Importante:</strong> o projeto não distribui ROMs.</p>
 
             <a class="download-button" href="https://github.com/SoraLeon/decode/releases/download/r/decode.rar" target="_blank">Baixar Patch da Tradução (.vcdiff)</a>
+
+            
         </div>
 
         <div class="warning">
@@ -1023,16 +1038,25 @@ body{
     <section class="section" id="sobre">
         <h2>Sobre a Tradução</h2>
         <p>
-            Este projeto tem como objetivo traduzir <span class="highlight">Digimon World Re:Digitize Decode</span> para o português, preservando a identidade do jogo e respeitando, na maior parte, a lore já estabelecida.
-        </p>
-
+            Este projeto teve como objetivo traduzir <span class="highlight">Digimon World Re:Digitize Decode</span> para o português brasileiro, preservando a identidade original do jogo e respeitando, sempre que possível, a lore já estabelecida da franquia Digimon.
+		</p>
         <p>
             Em alguns casos, certas decisões de nomenclatura foram revistas após discussão em grupo, buscando o melhor equilíbrio entre fidelidade, coerência e naturalidade em português.
         </p>
 
         <p>
-            A tradução foi produzida por uma equipe dedicada de fãs, envolvendo tradução, romhacking, edição gráfica, edição de vídeos e apoio geral ao projeto.
+            A tradução foi produzida pela equipe <span class="highlight">Digi-Translators</span>, um grupo de fãs dedicado à localização de jogos da franquia Digimon. O projeto envolveu tradução, revisão, romhacking, programação, edição gráfica, edição de vídeos, testes e apoio geral da comunidade.
         </p>
+		
+		<p>
+		   Além de Digimon World Re:Digitize Decode, a Digi-Translators também é responsável pelas traduções de <span class="highlight">Digimon Adventure (PSP)</span> e <span class="highlight">Digivice Ver. Portable (PSP)</span>, contribuindo para tornar mais títulos da franquia acessíveis ao público brasileiro.
+		</p>
+		<p>
+		   Após um longo período de desenvolvimento e revisões, a tradução foi concluída e disponibilizada gratuitamente para a comunidade.
+		</p>
+		<p>
+		   Mais informações sobre a equipe e seus projetos podem ser encontradas em: <a href="https://digi-translations.blogspot.com/" target="_blank" rel="noopener noreferrer"> Digi-Translations
+		</p>
     </section>
 
     <section class="section" id="faq">
@@ -1311,6 +1335,8 @@ if (bgMusic && audioArrow && audioPanel && audioToggle && volumeControl) {
     document.addEventListener("click", tryStartMusic, { once: true });
     updateAudioButton();
 }
+
+
 
 for(let i=0;i<180;i++){
     const star = document.createElement("div");
@@ -1688,6 +1714,9 @@ Se o problema persistir, confira se a ROM base está limpa, se o patch é realme
 });
 </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
