@@ -292,6 +292,46 @@ body{
     box-shadow:0 0 20px rgba(255,0,150,.5);
 }
 
+.download-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:12px;
+}
+
+.download-links .download-button{
+    margin-top:0;
+}
+
+.download-button.secondary{
+    background:linear-gradient(90deg, rgba(35,120,170,.85), rgba(0,215,255,.6));
+    box-shadow:0 0 15px rgba(0,215,255,.2);
+}
+
+.download-button.secondary:hover{
+    box-shadow:0 0 20px rgba(0,215,255,.35);
+}
+
+.install-guide{
+    margin-top:18px;
+    padding:16px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.install-guide h3{
+    margin-top:0;
+}
+
+.install-guide ol{
+    margin-left:26px;
+    margin-top:8px;
+}
+
+.install-guide li{
+    margin-bottom:10px;
+}
+
 .credit-group{
     margin-bottom:20px;
     padding:14px;
@@ -991,7 +1031,7 @@ body{
     </div>
 
     <div class="quick-desc" id="quickDesc">
-        Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode.
+        Baixe o patch da tradução em formato .vcdiff ou luma para Digimon World Re:Digitize Decode.
     </div>
 </div>
 
@@ -1005,13 +1045,15 @@ body{
         </p>
 
         <div class="download-box">
-            <p><strong>Formato do patch:</strong> .vcdiff <span class="small-muted">(compatível com xdelta/VCDIFF)</span></p>
             <p><strong>Compatibilidade:</strong> patch para ser aplicado sobre o dump pessoal correto do jogo.</p>
             <p><strong>Importante:</strong> o projeto não distribui ROMs.</p>
 
-            <a class="download-button" href="https://github.com/SoraLeon/decode/releases/download/r/decode.rar" target="_blank">Baixar Patch da Tradução (.vcdiff)</a>
+            <div class="download-links">
+                <a class="download-button" href="https://github.com/SoraLeon/decode/releases/download/r/decode.rar" target="_blank" rel="noopener noreferrer">Baixar Patch da Tradução (.vcdiff)</a>
+                <a class="download-button secondary" href="https://github.com/SoraLeon/decode/releases/download/r/00040000000AFC00.rar" target="_blank" rel="noopener noreferrer">Baixar Patch Luma (LayeredFS)</a>
+            </div>
 
-            
+            <p class="note">Traduzido pela Digi-Translators 2026. Todos os Direitos Reservados.</p>
         </div>
 
         <div class="warning">
@@ -1025,13 +1067,44 @@ body{
         <h2>Atualização</h2>
 
         <p class="update-intro">
-            A versão <span class="highlight">1.1</span> da tradução traz novos gráficos em português, correções de texto e ajustes de termos para deixar o jogo mais claro, consistente e agradável de jogar.
+            A versão <span class="highlight">1.2</span> da tradução traz correções de interface, ajustes em trechos da Digitorre e inclusão de gráficos que ainda faltavam. Abaixo também permanecem os destaques da versão 1.1.
         </p>
 
         <div class="update-box">
             <div class="update-header">
+                <span class="update-badge">v1.2</span>
+                <h3>Correções desta versão</h3>
+            </div>
+
+            <ul class="update-list">
+                <li>
+                    <span class="update-check">✓</span>
+                    <div class="update-text">
+                        <strong>Textos ajustados em telas e menus</strong>
+                        <span>Foram corrigidos textos que estavam passando do limite da tela ou ficando espremidos em algumas janelas e menus.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="update-check">✓</span>
+                    <div class="update-text">
+                        <strong>Trechos da Digitorre revisados</strong>
+                        <span>Partes da Digitorre que ainda permaneciam sem tradução foram revisadas e traduzidas nesta atualização.</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="update-check">✓</span>
+                    <div class="update-text">
+                        <strong>Gráficos faltantes adicionados</strong>
+                        <span>Elementos gráficos que ainda não haviam sido inseridos no patch agora foram incluídos para completar a apresentação em português.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="update-box">
+            <div class="update-header">
                 <span class="update-badge">v1.1</span>
-                <h3>O que foi adicionado nesta versão</h3>
+                <h3>Destaques da versão anterior</h3>
             </div>
 
             <ul class="update-list">
@@ -1320,6 +1393,24 @@ body{
                 <a class="download-button" href="https://www.youtube.com/watch?v=8twVx60RTY4" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
             </p>
 
+            <div class="install-guide">
+                <h3>Aplicando o patch Luma no 3DS</h3>
+                <ol>
+                    <li>Baixe e extraia o pacote do <strong>Patch Luma</strong> no computador.</li>
+                    <li>Copie a pasta <strong>luma</strong> do pacote para a raiz do cartão SD do seu Nintendo 3DS, mantendo a estrutura de pastas já preparada pelo patch.</li>
+                    <li>No console, confirme nas configurações do <strong>Luma3DS</strong> que a opção <strong>Enable game patching</strong> está ativada.</li>
+                    <li>Insira o cartão SD no 3DS e abra o jogo normalmente. Com o patching ativo, a tradução será carregada direto do SD.</li>
+                </ol>
+
+                <h3>Como colocar a ROM .3DS patcheada no console</h3>
+                <ol>
+                    <li>Use uma ROM japonesa limpa no formato <strong>.3DS</strong> e aplique nela o patch <strong>CONSOLE</strong> para gerar a versão traduzida.</li>
+                    <li>Copie a ROM <strong>.3DS</strong> traduzida para o cartão SD do 3DS em uma pasta fácil de localizar.</li>
+                    <li>Abra o <strong>GodMode9</strong> no console, navegue até o local onde a ROM foi salva e siga o procedimento de instalação/conversão disponível no seu setup.</li>
+                    <li>Depois da instalação, o jogo passará a aparecer no menu HOME do console para ser iniciado normalmente.</li>
+                </ol>
+            </div>
+
             <div class="warning">
                 <p>
                     Use sempre um dump limpo e correto do seu próprio jogo. Se a ROM base estiver errada, o patch pode falhar ou gerar problemas.
@@ -1425,13 +1516,13 @@ const contentPanel = document.querySelector(".content-panel");
 
 const descriptions = {
     download: "Baixe o patch da tradução em formato .vcdiff para Digimon World Re:Digitize Decode.",
-    atualizacao: "Veja tudo o que mudou na versão 1.1: gráficos traduzidos, correções de texto e ajustes de termos.",
+    atualizacao: "Veja tudo o que mudou na versão 1.2, incluindo correções de interface, Digitower e gráficos faltantes.",
     patcher: "Escolha a ROM base e o patch .vcdiff/.xdelta para gerar a ROM traduzida diretamente no navegador.",
     sobre: "Conheça melhor o projeto de tradução e a proposta da adaptação em português.",
     faq: "Veja respostas para dúvidas comuns sobre ROM, Citra, vídeos, textos e compatibilidade.",
     creditos: "Confira a equipe responsável pela tradução, romhacking, arte, vídeos e agradecimentos.",
     "creditos-musica": "Veja os créditos completos da música, ficha técnica e redes sociais do projeto musical.",
-    aplicar: "Veja um vídeo explicando como aplicar o patch da tradução no jogo."
+    aplicar: "Veja o vídeo e leia um passo a passo rápido para usar o patch Luma ou a ROM .3DS traduzida no 3DS."
 };
 
 buttons.forEach(button => {
@@ -1782,6 +1873,7 @@ Se o problema persistir, confira se a ROM base está limpa, se o patch é realme
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <!-- Aplicador adaptado para usar a lógica do rom-patcher-js inspirado em geoku.github.io/appmon -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
